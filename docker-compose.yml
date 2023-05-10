@@ -1,0 +1,108 @@
+version: '3.8'
+
+services:
+
+  apm-server:
+    image: docker.elastic.co/apm/apm-server:7.15.0
+    cap_add: ["CHOWN", "DAC_OVERRIDE", "SETGID", "SETUID"]
+    cap_drop: ["ALL"]
+    ports:
+    - 8200:8200
+    command: >
+       apm-server -e
+         -E apm-server.rum.enabled=true
+         -E setup.kibana.host=host.docker.internal:5601
+         -E setup.template.settings.index.number_of_replicas=0
+         -E apm-server.kibana.enabled=true
+         -E apm-server.kibana.host=host.docker.internal:5601
+         -E apm-server.auth.secret_token=${ELASTIC_APM_SECRET_TOKEN}
+         -E apm-server.auth.anonymous.enabled=true
+         -E output.elasticsearch.hosts=["host.docker.internal:9200"]
+         -E output.elasticsearch.protocol=http
+         -E output.elasticsearch.username=elastic
+         -E output.elasticsearch.password=${ELASTIC_PASSWORD}
+         -E output.elasticsearch.ssl.enabled=false
+    environment:
+      - ELASTICSEARCH_URL=http://host.docker.internal:9200
+      - xpack.apm.enabled=false    
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+    healthcheck:
+      interval: 10s
+      retries: 12
+      test: curl --write-out 'HTTP %{http_code}' --fail --silent --output /dev/null http://host.docker.internal:8200/
+    networks:
+      - elastic
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+   
+  elasticsearch:
+   container_name: elasticsearch
+   image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+   ports:
+    - 9200:9200
+   volumes:
+    - elasticsearch-data:/usr/share/elasticsearch/data
+   environment:
+    - xpack.monitoring.enabled=true
+    - xpack.watcher.enabled=false
+    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    - discovery.type=single-node      
+    - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+    - bootstrap.memory_lock=true
+    - xpack.security.enabled=true
+    - xpack.security.http.ssl.enabled=false
+    - xpack.security.transport.ssl.enabled=false
+    - xpack.license.self_generated.type=${LICENSE}
+   networks:
+    - elastic
+   extra_hosts:
+     - "host.docker.internal:host-gateway"
+  kibana:
+   container_name: kibana
+   image: docker.elastic.co/kibana/kibana:7.15.0
+   ports:
+    - 5601:5601
+   depends_on:
+    - elasticsearch
+   environment:
+    - ELASTICSEARCH_URL=http://host.docker.internal:9200
+    - xpack.apm.enabled=false    
+    - ELASTICSEARCH_USERNAME=elastic
+    - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+   networks:
+    - elastic
+   extra_hosts:
+     - "host.docker.internal:host-gateway"
+
+  otel-collector:
+   image: otel/opentelemetry-collector:0.76.1
+   command: [--config=/etc/otel-collector-config.yaml]
+   volumes:
+     - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+   extra_hosts:
+     - "host.docker.internal:host-gateway"
+   ports:
+     - 1888:1888 # pprof extension
+     - 8888:8888 # Prometheus metrics exposed by the collector
+     - 8889:8889 # Prometheus exporter metrics
+     - 13133:13133 # health_check extension
+     - 4317:4317 # OTLP gRPC receiver
+     - 4318:4318 # OTLP http receiver
+     - 55679:55679 # zpages extension
+   networks:
+    - elastic
+
+  
+networks:
+  elastic:
+    driver: bridge
+
+volumes:
+  elasticsearch-data:
+
+
+  # TODO: 
+  # create api key in apm server
+  # apm server connection elastic search falta user and senha conig no elastic e no apm para acessar ele 
+  # apm-server apikey create --ingest --agent-config --name java-001 -E output.elasticsearch.username=elastic -E output.elasticsearch.password=pass@123 --json
