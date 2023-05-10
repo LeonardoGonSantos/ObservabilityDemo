@@ -24,9 +24,23 @@ services:
          -E output.elasticsearch.ssl.enabled=false
     environment:
       - ELASTICSEARCH_URL=http://host.docker.internal:9200
-      - xpack.apm.enabled=false    
+      - xpack.apm.enabled=true    
       - ELASTICSEARCH_USERNAME=elastic
       - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - apm-server.rum.enabled=true
+      - setup.kibana.host=host.docker.internal:5601
+      - setup.template.settings.index.number_of_replicas=0
+      - apm-server.kibana.enabled=true
+      - apm-server.kibana.host=host.docker.internal:5601
+      - apm-server.auth.secret_token=${ELASTIC_APM_SECRET_TOKEN}
+      - apm-server.auth.anonymous.enabled=true
+      - output.elasticsearch.hosts=["host.docker.internal:9200"]
+      - output.elasticsearch.protocol=http
+      - output.elasticsearch.username=elastic
+      - output.elasticsearch.password=${ELASTIC_PASSWORD}
+      - output.elasticsearch.ssl.enabled=false
+      - apm-server.host="host.docker.internal:8200"
+      - apm-server.ssl.enabled=false
     healthcheck:
       interval: 10s
       retries: 12
@@ -50,14 +64,16 @@ services:
     - discovery.type=single-node      
     - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
     - bootstrap.memory_lock=true
-    - xpack.security.enabled=true
+    - xpack.security.enabled=false
     - xpack.security.http.ssl.enabled=false
     - xpack.security.transport.ssl.enabled=false
     - xpack.license.self_generated.type=${LICENSE}
+    - xpack.security.authc.token.enabled=false
    networks:
     - elastic
    extra_hosts:
      - "host.docker.internal:host-gateway"
+
   kibana:
    container_name: kibana
    image: docker.elastic.co/kibana/kibana:7.15.0
@@ -70,6 +86,10 @@ services:
     - xpack.apm.enabled=false    
     - ELASTICSEARCH_USERNAME=elastic
     - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+    - xpack.security.audit.enabled=true
+    - xpack.security.enabled=false
+    - xpack.security.disabled=true
+    - xpack.security.anonymous.enable=true
    networks:
     - elastic
    extra_hosts:
