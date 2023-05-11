@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{9E9457CE-EF1F-4D29-B5CF-3B7FBA264F76}|https">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/Test/TestOtlpExporter.cs" relfile="Test/TestOtlpExporter.cs" line="57" column="1" />
+      <Breakpoint file="/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/Test/TestOtlpExporter.cs" relfile="Test/TestOtlpExporter.cs" line="85" column="1" />
+      <Breakpoint file="/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/Test/Instrumentation.cs" relfile="Test/Instrumentation.cs" line="47" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ProjectInputData PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Test/TestOtlpExporter.cs">
+    <Files>
+      <File FileName="Program.cs" Line="45" Column="43" />
+      <File FileName="Test/TestOtlpExporter.cs" Line="72" Column="16" />
+      <File FileName="Test/Instrumentation.cs" Line="31" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ProjectInputData" expanded="True">
+            <Node name="ProjectInputData" expanded="True">
+              <Node name="Test" expanded="True">
+                <Node name="TestOtlpExporter.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

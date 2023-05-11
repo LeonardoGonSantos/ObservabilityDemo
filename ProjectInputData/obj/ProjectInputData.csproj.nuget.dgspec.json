@@ -1,0 +1,95 @@
+{
+  "format": 1,
+  "restore": {
+    "/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/ProjectInputData.csproj": {}
+  },
+  "projects": {
+    "/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/ProjectInputData.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/ProjectInputData.csproj",
+        "projectName": "ProjectInputData",
+        "projectPath": "/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/ProjectInputData.csproj",
+        "packagesPath": "/Users/leonardogoncalves/.nuget/packages/",
+        "outputPath": "/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/leonardogoncalves/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "OpenTelemetry": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "OpenTelemetry.Exporter.Console": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "OpenTelemetry.Exporter.OpenTelemetryProtocol": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "OpenTelemetry.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "OpenTelemetry.Instrumentation.AspNetCore": {
+              "target": "Package",
+              "version": "[1.0.0-rc9.14, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
