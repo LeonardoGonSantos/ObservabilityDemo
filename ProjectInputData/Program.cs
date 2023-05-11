@@ -7,7 +7,7 @@ using Examples.Console;
 var builder = WebApplication.CreateBuilder(args);
 
 var serviceName = "MyCompany.MyProduct.MyService";
-var serviceVersion = "1.0.0";
+var serviceVersion = "1.0.0"; 
 
 builder.Services.AddOpenTelemetry()
   .WithTracing(b =>

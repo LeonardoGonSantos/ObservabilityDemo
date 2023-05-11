@@ -1,0 +1,37 @@
+
+      - apm-server.rum.enabled=false
+      - setup.kibana.host=host.docker.internal:5601
+      - setup.template.settings.index.number_of_replicas=0
+      - apm-server.kibana.enabled=true
+      - apm-server.kibana.host=host.docker.internal:5601
+      - apm-server.auth.secret_token=${ELASTIC_APM_SECRET_TOKEN}
+      - apm-server.auth.anonymous.enabled=true
+      - output.elasticsearch.hosts=["host.docker.internal:9200"]
+      - output.elasticsearch.protocol=http
+      - output.elasticsearch.username=elastic
+      - output.elasticsearch.password=${ELASTIC_PASSWORD}
+      - output.elasticsearch.ssl.enabled=false
+      - apm-server.host="host.docker.internal:8200"
+      - apm-server.ssl.enabled=false
+      - apm-server.instrumentation.enabled=true
+      - apm-server.instrumentation.hosts=http://host.docker.internal:8200
+      - apm-server.http.enabled=true
+      - apm-server.http.host=host.docker.internal
+      - apm-server.http.port=5066
+      - xpack.apm.enabled=true    
+
+         command: >
+       apm-server -e
+         -E apm-server.rum.enabled=false
+         -E setup.kibana.host=host.docker.internal:5601
+         -E setup.template.settings.index.number_of_replicas=0
+         -E apm-server.kibana.enabled=true
+         -E apm-server.kibana.host=host.docker.internal:5601
+         -E apm-server.auth.secret_token=${ELASTIC_APM_SECRET_TOKEN}
+         -E apm-server.auth.anonymous.enabled=true
+         -E output.elasticsearch.hosts=["host.docker.internal:9200"]
+         -E output.elasticsearch.protocol=http
+         -E output.elasticsearch.username=elastic
+         -E output.elasticsearch.password=${ELASTIC_PASSWORD}
+         -E output.elasticsearch.ssl.enabled=false
+         -E xpack.apm.enabled=true

@@ -17,8 +17,8 @@ processors:
 
 exporters:
   logging:
-    loglevel: warn 
-  otlp/elastic: 
+
+  otlphttp: 
     # Elastic APM server https endpoint without the "https://" prefix
     endpoint: "http://host.docker.internal:8200"  
     tls:
@@ -31,10 +31,13 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [logging, otlp/elastic]
+      processors: [batch]
+      exporters: [logging, otlphttp]
     metrics:
       receivers: [otlp]
-      exporters: [logging, otlp/elastic]
+      processors: [batch]
+      exporters: [logging, otlphttp]
     logs: 
       receivers: [otlp]
-      exporters: [logging, otlp/elastic]
+      processors: [batch]
+      exporters: [logging, otlphttp]
