@@ -20,7 +20,7 @@ exporters:
 
   otlphttp: 
     # Elastic APM server https endpoint without the "https://" prefix
-    endpoint: "http://host.docker.internal:8200"  
+    endpoint: "http://apm-server:8200"  
     tls:
       insecure: true
     headers:
