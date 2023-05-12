@@ -13,7 +13,7 @@ builder.Services.AddOpenTelemetry()
   .WithTracing(b =>
   {
       b
-      .AddOtlpExporter(a => a.Endpoint = new Uri("http://host.docker.internal:4317"))
+      .AddOtlpExporter(a => a.Endpoint = new Uri("http://localhost:4315"))
       .AddSource(serviceName)
       .ConfigureResource(resource =>
           resource.AddService(
@@ -42,7 +42,7 @@ app.UseHttpsRedirection();
 
 app.MapGet("/forceLogging", () =>
 {
-    TestOtlpExporter.Run("http://localhost:4317", "grpc");
+    TestOtlpExporter.Run("http://localhost:4315", "grpc");
     return "teste ok";
 })
 .WithName("Observability Teste")
