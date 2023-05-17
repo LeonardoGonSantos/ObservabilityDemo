@@ -31,8 +31,8 @@ services:
    environment:
     - xpack.monitoring.enabled=true
     - xpack.watcher.enabled=false
-    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    - discovery.type=single-node      
+    - "ES_JAVA_OPTS=-Xms1100m -Xmx1100m"
+    - discovery.type=single-node     
     - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
     - bootstrap.memory_lock=true
     - xpack.security.enabled=false
@@ -54,7 +54,7 @@ services:
     - elastic
    environment:
     - ELASTICSEARCH_URL=http://host.docker.internal:9200
-    - xpack.apm.enabled=false    
+    - xpack.apm.enabled=true    
     - ELASTICSEARCH_USERNAME=elastic
     - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
     - xpack.security.audit.enabled=true
