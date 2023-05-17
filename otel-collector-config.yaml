@@ -17,15 +17,16 @@ processors:
 
 exporters:
   logging:
+    verbosity: detailed
 
   otlphttp: 
     # Elastic APM server https endpoint without the "https://" prefix
-    endpoint: "http://apm-server:8200"  
+    endpoint: "apm-server:8200"  
     tls:
       insecure: true
-    headers:
+    #headers:
       # Elastic APM Server secret token
-      Authorization: "Bearer ca50d01e-b207-4066-adb2-d01adaf9ab77"  
+      #Authorization: "Bearer ca50d01e-b207-4066-adb2-d01adaf9ab77"  
 
 service:
   pipelines:
