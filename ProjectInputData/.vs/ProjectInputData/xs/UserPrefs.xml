@@ -1,32 +1,33 @@
 ﻿<Properties StartupConfiguration="{9E9457CE-EF1F-4D29-B5CF-3B7FBA264F76}|https">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.ProjectInputData PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/Test/TestOtlpExporter.cs" relfile="Test/TestOtlpExporter.cs" line="57" column="1" />
-      <Breakpoint file="/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/Test/TestOtlpExporter.cs" relfile="Test/TestOtlpExporter.cs" line="85" column="1" />
-      <Breakpoint file="/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/Test/Instrumentation.cs" relfile="Test/Instrumentation.cs" line="47" column="1" />
+      <Breakpoint enabled="false" file="/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/Test/TestOtlpExporter.cs" relfile="Test/TestOtlpExporter.cs" line="57" column="1" />
+      <Breakpoint enabled="false" file="/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/Test/TestOtlpExporter.cs" relfile="Test/TestOtlpExporter.cs" line="85" column="1" />
+      <Breakpoint enabled="false" file="/Volumes/MAC_SSD/Arquivos/Observabilidade - ELK+KIBANA+OPENTEMETRY/ProjectInputData/Test/Instrumentation.cs" relfile="Test/Instrumentation.cs" line="47" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ProjectInputData PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Test/Instrumentation.cs">
     <Files>
-      <File FileName="Program.cs" Line="51" Column="1" />
-      <File FileName="Test/TestOtlpExporter.cs" Line="63" Column="1" />
-      <File FileName="Test/Instrumentation.cs" />
+      <File FileName="Program.cs" Line="13" Column="19" />
+      <File FileName="Test/TestOtlpExporter.cs" Line="87" Column="27" />
+      <File FileName="Test/Instrumentation.cs" Line="58" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProjectInputData" expanded="True">
             <Node name="ProjectInputData" expanded="True">
-              <Node name="Test" expanded="True" />
-              <Node name="Program.cs" selected="True" />
+              <Node name="Test" expanded="True">
+                <Node name="Instrumentation.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
 </Properties>
