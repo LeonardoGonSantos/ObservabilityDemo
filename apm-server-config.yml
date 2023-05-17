@@ -7,7 +7,7 @@ apm-server:
   host: "apm-server:8200"
 
   # Agent authorization configuration. If no methods are defined, all requests will be allowed.
-  #auth:
+  auth:
     # Agent authorization using Elasticsearch API Keys.
     #api_key:
       #enabled: false
@@ -21,7 +21,7 @@ apm-server:
 
     # Allow anonymous access only for specified agents and/or services. This is primarily intended to allow
     # limited access for untrusted agents, such as Real User Monitoring.
-    #anonymous:
+    anonymous:
       # By default anonymous auth is automatically enabled when either auth.api_key or
       # auth.secret_token is enabled, and RUM is enabled. Otherwise, anonymous auth is
       # disabled by default.
@@ -29,7 +29,7 @@ apm-server:
       # When anonymous auth is enabled, only agents matching allow_agent and services
       # matching allow_service are allowed. See below for details on default values for
       # allow_agent.
-      #enabled:
+      enabled: true
 
       # Allow anonymous access only for specified agents.
       #allow_agent: [rum-js, js-base]
@@ -95,8 +95,8 @@ apm-server:
   #---------------------------- APM Server - Secure Communication with Agents ----------------------------
 
   # Enable secure communication between APM agents and the server. By default ssl is disabled.
-  #ssl:
-    #enabled: false
+  ssl:
+    enabled: false
 
     # Path to file containing the certificate for server authentication.
     # Needs to be configured when ssl is enabled.
@@ -423,12 +423,12 @@ output.elasticsearch:
 #----------------------------- Console output -----------------------------
 #output.console:
   # Boolean flag to enable or disable the output module.
-  #enabled: false
+  #enabled: true
 
   # Configure JSON encoding.
   #codec.json:
     # Pretty-print JSON event.
-    #pretty: false
+    #pretty: true
 
     # Configure escaping HTML symbols in strings.
     #escape_html: false
@@ -722,10 +722,10 @@ output.elasticsearch:
 #============================= Instrumentation =============================
 
 # Instrumentation support for the server's HTTP endpoints and event publisher.
-#instrumentation:
+instrumentation:
 
   # Set to true to enable instrumentation of the APM Server itself.
-  #enabled: false
+  enabled: true
 
   # Environment in which the APM Server is running on (eg: staging, production, etc.)
   #environment: ""

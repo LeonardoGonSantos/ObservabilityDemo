@@ -84,7 +84,7 @@ namespace Examples.Console
             // which decide to use OpenTelemetry.
             using (var sample = new InstrumentationWithActivitySource())
             {
-                sample.Start(8232);
+                sample.Start(8332);
 
                 System.Console.WriteLine("Traces are being created and exported " +
                     "to the OpenTelemetry Collector in the background. " +
