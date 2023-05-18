@@ -330,8 +330,8 @@ output.elasticsearch:
 
   # Authentication credentials - either API key or username/password.
   #api_key: "id:api_key"
-  username: "elastic"
-  password: "pass@123"
+  #username: "elastic"
+  #password: "pass@123"
 
   # Optional HTTP Path.
   #path: "/elasticsearch"

@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   apm-server:
-    image: docker.elastic.co/apm/apm-server:7.15.0
+    image: docker.elastic.co/apm/apm-server:8.7.1
     cap_add: ["CHOWN", "DAC_OVERRIDE", "SETGID", "SETUID"]
     cap_drop: ["ALL"]
     ports:
@@ -21,7 +21,7 @@ services:
   
   elasticsearch:
    container_name: elasticsearch
-   image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+   image: docker.elastic.co/elasticsearch/elasticsearch:8.7.1
    ports:
     - 9200:9200
    volumes:
@@ -29,12 +29,11 @@ services:
    networks:
     - elastic
    environment:
-    - xpack.monitoring.enabled=true
+    #- xpack.monitoring.enabled=true
     - xpack.watcher.enabled=false
-    - "ES_JAVA_OPTS=-Xms1100m -Xmx1100m"
+    - ES_JAVA_OPTS=-Xms1100m -Xmx1100m
     - discovery.type=single-node     
-    - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
-    - bootstrap.memory_lock=true
+    #- elasticsearch.password=${ELASTIC_PASSWORD}
     - xpack.security.enabled=false
     - xpack.security.http.ssl.enabled=false
     - xpack.security.transport.ssl.enabled=false
@@ -45,7 +44,7 @@ services:
 
   kibana:
    container_name: kibana
-   image: docker.elastic.co/kibana/kibana:7.15.0
+   image: docker.elastic.co/kibana/kibana:8.7.1
    ports:
     - 5601:5601
    depends_on:
@@ -53,14 +52,19 @@ services:
    networks:
     - elastic
    environment:
-    - ELASTICSEARCH_URL=http://host.docker.internal:9200
+    - elasticsearch.hosts=http://host.docker.internal:9200
     - xpack.apm.enabled=true    
-    - ELASTICSEARCH_USERNAME=elastic
-    - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+    - elasticsearch.username=elastic
+    - elasticsearch.password=${ELASTIC_PASSWORD}
     - xpack.security.audit.enabled=true
     - xpack.security.enabled=false
+    - xpack.security.authc.http.enabled
     - xpack.security.disabled=true
     - xpack.security.anonymous.enable=true
+    - xpack.license.self_generated.type=${LICENSE}
+    - xpack.security.authc.providers.anonymous.anonymous1.order=0
+    - xpack.security.authc.providers.anonymous.anonymous1.credentials.username="anonymous_service_account"
+    - xpack.security.authc.providers.anonymous.anonymous1.credentials.password="anonymous_service_account_password" 
    extra_hosts:
      - "host.docker.internal:host-gateway"
 
@@ -103,6 +107,5 @@ volumes:
 
 
   # TODO: 
-  # create api key in apm server
-  # apm server connection elastic search falta user and senha conig no elastic e no apm para acessar ele 
+  # https://levelup.gitconnected.com/how-to-run-elasticsearch-8-on-docker-for-local-development-401fd3fff829 
   # apm-server apikey create --ingest --agent-config --name java-001 -E output.elasticsearch.username=elastic -E output.elasticsearch.password=pass@123 --json
